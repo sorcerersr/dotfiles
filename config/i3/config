@@ -254,29 +254,6 @@ bindsym $mod+Shift+Pause mode "$mode_system"
 bindsym XF86PowerOff mode "$mode_system"
 bindsym $mod+Shift+e mode "$mode_system"
 
-# start bar (i3blocks)
-# bar {
-#       colors {
-#         statusline         $white
-#         background         $transparent
-#         separator          $blue
-
-#         #                  BORDER       BACKGROUND   TEXT
-#         focused_workspace  $transparent $transparent $darkblue
-#         inactive_workspace $transparent $transparent $white
-#         active_workspace   $transparent $transparent $white
-#         urgent_workspace   $darkred     $darkred     $white
-#         binding_mode       $transparent $transparent $blue
-#     }
-
-#     strip_workspace_numbers yes
-#     font pango:DejaVu Sans Mono 10, FontAwesome 10
-#     position top
-#     separator_symbol " "
-#     status_command i3blocks
-#     tray_output eDP
-# }
-
 # start bar (polybar)
 exec --no-startup-id runpolybar.sh
 
@@ -299,8 +276,8 @@ gaps outer 0
 smart_gaps on
 #smart_borders on
 
-bindsym XF86MonBrightnessUp exec "brightnessctl s +5%; notify-send 'Brightness up' && pkill -RTMIN+1 i3blocks"
-bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-; notify-send 'Brightness down' && pkill -RTMIN+1 i3blocks"
+bindsym XF86MonBrightnessUp exec "brightnessctl s +5%; notify-send 'Brightness up'"
+bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-; notify-send 'Brightness down'"
 
 # launch udiskie - usb media automount
 exec --no-startup-id udiskie
@@ -321,15 +298,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Path to volume control, without trailing slash
 set $volumepath ~/.local/bin/
 
-# Command for the status line (used with -t, requires -u)
-#   ie: i3blocks, i3status
-set $statuscmd i3blocks
-
-# Signal used to update the status line (used with -u, requires -t)
-#   i3blocks uses SIGRTMIN+10 by default
-#   i3status uses SIGUSR1 by default
-set $statussig SIGUSR1
-
 # Amount to increase/decrease volume as a percentage (used with -i, -d)
 set $volumestep 5
 
@@ -341,9 +309,9 @@ set $volumestep 5
 set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
 
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
-bindsym XF86AudioRaiseVolume exec $volumepath/i3-volume -y -np -i $volumestep -t $statuscmd -u $statussig && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec $volumepath/i3-volume -y -np -d $volumestep -t $statuscmd -u $statussig && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute        exec $volumepath/i3-volume -y -mn -t $statuscmd -u $statussig && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec $volumepath/i3-volume -y -np -i $volumestep
+bindsym XF86AudioLowerVolume exec $volumepath/i3-volume -y -np -d $volumestep
+bindsym XF86AudioMute        exec $volumepath/i3-volume -y -mn
 
 # cloud drive
 exec --no-startup-id /home/stefan/.local/bin/mount_mmailbox_drive
