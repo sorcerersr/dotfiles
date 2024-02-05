@@ -1,0 +1,104 @@
+theme = "github_dark"
+ 
+[editor]
+line-number = "relative"
+mouse = true
+# rulers = [80,120]
+bufferline = "always"
+cursorline = true
+ 
+[editor.indent-guides]
+render = true
+ 
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+ 
+[editor.file-picker]
+hidden = false
+ 
+[keys.normal]
+V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+# D = ["ensure_selections_forward", "extend_to_line_end"]
+x = "extend_line"
+C-s = ":w"
+C-q = ":bclose"
+C-space = "signature_help"
+a = ["append_mode", "collapse_selection"]
+C-h = ":buffer-previous"
+C-l = ":buffer-next"
+L = "extend_to_line_end"
+C-a = "select_all"
+A-f = [":w", ":run-shell-command dioxus fmt", ":reload"]
+#C-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E gitui"
+A-g = ":sh zellij run -c -f -n \"gitui\" -- gitui"
+C-e = ":sh zellij run -c -f -n \"broot\" -- broot"
+
+ 
+# Use the system clipboard like a normal app
+d = ["yank_joined_to_clipboard", "delete_selection_noyank"]
+D = "delete_selection_noyank"
+y = "yank_joined_to_clipboard"
+Y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+R = "replace_selections_with_clipboard"
+ 
+# Shift Arrows move 5 times in direction
+S-up = [
+  "move_line_up",
+  "move_line_up",
+  "move_line_up",
+  "move_line_up",
+  "move_line_up",
+]
+S-down = [
+  "move_line_down",
+  "move_line_down",
+  "move_line_down",
+  "move_line_down",
+  "move_line_down",
+]
+S-left = [
+  "move_char_left",
+  "move_char_left",
+  "move_char_left",
+  "move_char_left",
+  "move_char_left",
+]
+S-right = [
+  "move_char_right",
+  "move_char_right",
+  "move_char_right",
+  "move_char_right",
+  "move_char_right",
+]
+ 
+[keys.normal.space]
+q = ":quit"
+ 
+[keys.select]
+";" = ["collapse_selection", "normal_mode"]
+# Same behaviour as normal mode x
+x = "extend_line"
+# Counterpart for normal mode V
+V = "extend_to_line_end"
+ 
+[keys.insert]
+C-s = [":w", "normal_mode"]
+C-q = "collapse_selection"
+C-space = "signature_help"
+ 
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name", "diagnostics"]
+right = ["selections", "position", "total-line-numbers", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "🟦 NORMAL 🟦"
+mode.insert = "🟩 INSERT 🟩"
+mode.select = "🟨 SELECT 🟨"
+ 
+[editor.lsp]
+auto-signature-help = false
+ 

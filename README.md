@@ -5,6 +5,7 @@
  * Polybar
  * Dunst
  * Rofi
+ * helix-editor
 
 ## Screenshot
 
